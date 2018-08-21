@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+        <artifactId>springcloud-fang</artifactId>
+        <groupId>com.fangj.springcloud.core</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+  <packaging>pom</packaging>
+  <artifactId>fang-servicedemo</artifactId>
+  <name>fang-servicedemo</name>
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>provided</scope>
+      <!--optional我没弄明白，都说必须为true，但我测试true，false，不加都可以-->
+      <optional>true</optional>
+    </dependency>
+    <!-- 该包下的微服务被监控 -->
+    <dependency>
+	    <groupId>org.springframework.cloud</groupId>
+	    <artifactId>spring-cloud-starter-hystrix</artifactId>
+	</dependency>
+    <dependency>  
+        <groupId>org.springframework.cloud</groupId>  
+        <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>  
+    </dependency>
+	<!-- 被监控client -->
+   	<dependency>
+	   <groupId>org.springframework.cloud</groupId>
+	   <artifactId>spring-cloud-starter-zipkin</artifactId>
+	</dependency>
+	
+	<!-- 被监控client -->
+	<dependency>
+	    <groupId>de.codecentric</groupId>
+	    <artifactId>spring-boot-admin-starter-client</artifactId>
+	    <version>1.5.6</version>
+	</dependency>
+	
+	<!-- okhttp -->
+	<dependency>
+		<groupId>io.github.openfeign</groupId>
+		<artifactId>feign-okhttp</artifactId>
+	</dependency>
+
+  </dependencies>
+  <modules>
+  <module>fang-service-A</module>
+  <module>fang-service-B</module>
+  <module>fang-service-AA</module>
+  <module>fang-service-jwtresource</module>
+  </modules>
+</project>

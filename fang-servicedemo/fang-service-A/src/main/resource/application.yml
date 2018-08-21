@@ -1,0 +1,13 @@
+endpoints:
+  health:
+    sensitive: false
+    enabled: true
+management:
+  security:
+    enabled: false
+security:
+  oauth2:
+    resource:
+      id: fangservera
+      user-info-uri: http://192.168.1.25:9520/user
+      prefer-token-info: false

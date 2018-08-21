@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+        <artifactId>springcloud-fang</artifactId>
+        <groupId>com.fangj.springcloud.core</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+  <packaging>jar</packaging>
+  <artifactId>fang-Service-Admin</artifactId>
+
+  <name>fang-Service-Admin</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <spring-boot-admin.version>1.5.6</spring-boot-admin.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server</artifactId>
+        <version>${spring-boot-admin.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server-ui</artifactId>
+        <version>${spring-boot-admin.version}</version>
+    </dependency>
+    <!-- 监控 -->
+    <dependency>
+            <groupId>de.codecentric</groupId>  
+            <artifactId>spring-boot-admin-server-ui-hystrix</artifactId>  
+            <version>${spring-boot-admin.version}</version> 
+    </dependency>
+    <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-server-ui-turbine</artifactId>
+			<version>${spring-boot-admin.version}</version>
+     </dependency>
+     <dependency>
+         <groupId>org.springframework.cloud</groupId>
+         <artifactId>spring-cloud-starter-turbine</artifactId>
+     </dependency>
+  </dependencies>
+
+  <build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                    <mainClass>com.fangj.springcloud.core.AdminServiceApplication</mainClass>
+                    <addResources>false</addResources>
+                </configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

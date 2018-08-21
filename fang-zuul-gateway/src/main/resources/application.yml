@@ -1,0 +1,63 @@
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  routes:
+    uaa:
+      path: /uaa/**
+      strip-prefix: true
+      sensitiveHeaders:
+      serviceId: auth-server2
+
+jwt:
+  token-header: token # 其三方应用token
+  expire: 7200
+  pri-key: #   私钥
+    path: app/pri.key
+  pub-key:
+    path: app/pub.key
+
+client:
+  id: auth-server2
+  secret: 123456
+  token-header: token
+  admin-header: _isAdmin
+  expire: 7200
+  pri-key: # client 私钥
+    path: client/pri.key
+  pub-key:
+    path: client/pub.key
+    
+# 网关忽略拦截前缀（自定义）
+gateway:
+  ignore:
+    start-with-list:
+      - /static
+      - /uaa/oauth/token
+      - /uaa/oauth/login
+      - /uaa/app/token
+      - /base/swagger-ui.html
+      - /base/webjars
+      - /base/v2/api-docs
+      - /base/swagger-resources
+      - /admin/swagger-ui.html
+      - /admin/webjars
+      - /admin/v2/api-docs
+      - /admin/swagger-resources
+      - /file/swagger-ui.html
+      - /file/webjars
+      - /file/v2/api-docs
+      - /file/swagger-resources
+auth:
+  serviceId: auth-server2
+  app:
+    token-header: access_token # 其三方应用token
+    pub-key:  # 服务端公钥路径
+      path: app/pub.key
+  client:
+    id: zuul-gateway  #不填则默认读取spring.application.name
+    secret: 123456
+    token-header: access_token
+    admin-header: secret
+    pub-key: # 客服端公钥路径
+      path: client/pub.key

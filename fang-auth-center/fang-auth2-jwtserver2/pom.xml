@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+        <artifactId>fang-auth-center</artifactId>
+        <groupId>com.fangj.springcloud.core</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+	<packaging>jar</packaging>
+  <groupId>com.fangj.springcloud.core</groupId>
+  <artifactId>fang-auth2-jwtserver2</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>fang-auth2-jwtserver2</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    	<dependency>
+			<groupId>com.fangj.springcloud.core.jwt</groupId>
+			<artifactId>fang-framework-core-jwt</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+  </dependencies>
+<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                    <encoding>UTF-8</encoding>
+                    <!-- 过滤后缀为pem、pfx的证书文件 -->
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>pem</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>pfx</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>p12</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>key</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
